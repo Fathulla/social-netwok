@@ -46,10 +46,10 @@ export const RegistrationPage = () => {
   const onRegistrationSubmit = (data: any) => {
     registerUser({
       email: data.email,
-      name: data.email,
-      phone_number: data.email,
-      password: data.email,
-      user_city: data.email,
+      name: data.username,
+      phone_number: data.userphone,
+      password: data.userpassword,
+      user_city: data.city,
     })
   };
 

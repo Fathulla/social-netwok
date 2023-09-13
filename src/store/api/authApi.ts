@@ -23,6 +23,11 @@ interface LoginUserPayload {
 interface LoginUserData {
   status: number;
   user_id: number;
+  email: string;
+  name: string;
+  phone_number: number;
+  password: string;
+  user_city: string;
 }
 
 interface RegistrationUserPayload {
@@ -36,7 +41,7 @@ interface RegistrationUserPayload {
   email: string;
 }
 
-interface RegistrationUserData extends LoginUserData{}
+interface RegistrationUserData extends RegistrationUserPayload{}
 
 export const authApi = createApi({
   reducerPath: "authApi",
@@ -60,11 +65,10 @@ export const authApi = createApi({
         };
       },
     }),
-    getUser: builder.query({
-      query: (userId: string) => "/user/$(userId)",
+    getUser: builder.query ({
+      query: (userId: string) => `/user/$(userId)`,
     }),
   }),
 });
 
-export const { useAddUserMutation, useLoginUserMutation, useGetUserQuery } =
-  authApi;
+export const { useAddUserMutation, useLoginUserMutation, useGetUserQuery } = authApi;
