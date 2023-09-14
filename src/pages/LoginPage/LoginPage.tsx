@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Container } from "../../components/UI/Container/Container";
-import "./LoginPage.scss";
 import { AppHeader } from "../../components/UI/AppHeader/AppHeader";
 import { AppInput } from "../../components/UI/AppInput/AppInput";
 import { RegistrationInfo } from "../../components/RegistrationInfo/RegistrationInfo";
@@ -14,11 +13,12 @@ import { RootState } from "../../store/store";
 import { changeUser } from "../../store/userSlice";
 import { User } from "./../../store/userSlice";
 import { useGetUserQuery, useLoginUserMutation } from "../../store/api/authApi";
+import { ThemeLoginPage } from "./LoginPage.style";
 
 const mockUser: User = {
   user_id: 999,
   name: "pavel",
-  mail: "test@test.com",
+  mail: "test@test.com",  
   phone_number: "123123",
   reg_data: new Date().toISOString(),
   city: "Tashkent",
@@ -78,8 +78,8 @@ export const LoginPage = () => {
 
   return (
     <Container>
-      <div className="LoginPage">
-        <AppHeader type="h1" headerText="Авторизация" />
+      <ThemeLoginPage>
+      <AppHeader type="h1" headerText="Авторизация" />
         <form onSubmit={handleSubmit(onLoginSubmit)}>
           <Controller
             name="useremail"
@@ -113,7 +113,7 @@ export const LoginPage = () => {
         </form>
         <Link to="/forget-password">Забыли пароль?</Link>
         <RegistrationInfo />
-      </div>
+      </ThemeLoginPage>
     </Container>
   );
 };

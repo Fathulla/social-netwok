@@ -23,21 +23,13 @@ interface LoginUserPayload {
 interface LoginUserData {
   status: number;
   user_id: number;
-  email: string;
-  name: string;
-  phone_number: number;
-  password: string;
-  user_city: string;
 }
 
 interface RegistrationUserPayload {
   name: string;
-  phone_number: number;
+  phone_number: string;
   password: string;
   user_city: string;
-  user_id: number;
-  city: string;
-  reg_data: string;
   email: string;
 }
 

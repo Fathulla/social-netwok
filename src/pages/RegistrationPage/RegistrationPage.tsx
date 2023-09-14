@@ -43,7 +43,7 @@ export const RegistrationPage = () => {
 
   const [registerUser] = useAddUserMutation()
 
-  const onRegistrationSubmit = (data: any) => {
+  const onRegistrationSubmit = (data: RegistrationForm) => {
     registerUser({
       email: data.email,
       name: data.username,
@@ -63,8 +63,8 @@ export const RegistrationPage = () => {
             control={control}
             render={({ field }) => (
               <AppInput
-                type="email"
-                placeholderText="Имя и Фамилия"
+                type="text"
+                placeholderText="Email"
                 {...field}
                 isError={errors.email ? true : false}
                 errorText={errors.email?.message}
@@ -87,15 +87,15 @@ export const RegistrationPage = () => {
             )}
           />
           <Controller
-            name="userpassword"
+            name="city"
             control={control}
             render={({ field }) => (
               <AppInput
-                type="password"
-                placeholderText="Пароль"
+                type="text"
+                placeholderText="City"
                 {...field}
-                isError={errors.userpassword ? true : false}
-                errorText={errors.userpassword?.message}
+                isError={errors.city ? true : false}
+                errorText={errors.city?.message}
                 {...field}
               />
             )}
