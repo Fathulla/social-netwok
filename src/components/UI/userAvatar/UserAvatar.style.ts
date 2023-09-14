@@ -21,8 +21,10 @@ export const FileInput = styled.input`
   object-fit: cover;
   border: 5px solid ${(props) => props.theme.colors.elemsBgc};
   border-radius: 50%;
-
+  
   position: absolute;
   top: -56px;
   left: 30px;
+  opacity: 0
+  cursor: pointer;
 `;
