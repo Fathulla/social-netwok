@@ -1,6 +1,8 @@
+import { click } from '@testing-library/user-event/dist/click';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
+import { UserAvatar } from '../UI/userAvatar/UserAvatar';
 
 
 
@@ -22,7 +24,7 @@ export const ProfileHeader = () => {
           />
         </svg>
         <div className="user__block">
-          <img src="./img/users/denis-frolov.jpeg" alt="Denis Frolov" />
+          <UserAvatar avatarUrl='' onAvatarClick={() => {}}/>
           <div className="user__description">
             <h1 className="user__name">{user?.name}</h1>
             <div className="user__info">
