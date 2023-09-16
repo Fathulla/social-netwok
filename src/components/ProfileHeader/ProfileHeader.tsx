@@ -8,7 +8,7 @@ import { useState } from 'react';
 
 export const ProfileHeader = () => {
   const user = useSelector((state: RootState) => state.userSLice.user)
-  const [avtar, setAvatar] = useState('src="./img/users/denis-frolov.jpeg"')
+  const [avatar, setAvatar] = useState('src="./img/users/denis-frolov.jpeg"')
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files?.[0]) {
@@ -47,7 +47,7 @@ export const ProfileHeader = () => {
       <div className="user__block">
         <UserAvatar 
           userName='Hello MF'
-          avatarUrl='' 
+          avatarUrl='avatar' 
           onAvatarClick={() => {}}
         />
         <div className="user__description">
