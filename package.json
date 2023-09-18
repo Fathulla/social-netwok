@@ -26,8 +26,6 @@
     "yup": "^1.2.0"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -53,6 +51,5 @@
   },
   "devDependencies": {
     "sass": "^1.65.1"
-  },
-  "homepage": "https://Fathulla.github.io/social-media"
+  }
 }
