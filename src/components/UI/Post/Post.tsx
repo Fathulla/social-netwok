@@ -1,50 +1,57 @@
 import React from "react";
+import {useState} from 'react'
+import { PostMenu } from './PostMenu';
+import { useUploadFileMutation} from "../../../store/api/fileApi"
 
-export const Post = () => {
+interface PostProps {
+  userName: string;
+  postDate: string;
+  photos: Array<string>;
+  postText: string;
+  postId: string;
+}
+
+export const Post = ({ 
+    userName, 
+    postDate, 
+    postText, 
+    photos,
+    postId, 
+    }: PostProps) => {
+        const [isMenuOpen, toggleMenu] = useState<boolean>(false)
+
+        const [uploadFile] = useUploadFileMutation()
+        
+    const onPostFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if( event.target.files?.[0]) {
+            const formData = new FormData();
+            const file = event.target.files[0]
+
+            formData.append('post_id', postId)
+            formData.append('photo_file', file)
+        }
+    }
+
   return (
     <div className="Post _liked _marked">
       <div className="UserElem">
         <img src="./img/users/aleksandr-maykov.jpeg" alt="User" />
         <div className="user__description">
-          <a href="#" className="main__text">
-            Александр Майков
-          </a>
-          <p className="secondary__text">Сегодня 9:37</p>
+          <span className="main__text">{userName}</span>
+          <p className="secondary__text">{postDate}</p>
         </div>
       </div>
-      <p className="Post__text">Момент умиротворения и спокойствия</p>
-      <div className="media-container">
+      <p className="Post__text">{postText}</p>
+
+      {photos.length && <div className="media-container">
+      {photos.map((photo) => (
         <img
           className="media__item"
-          src="./img/post/nature-1.png"
+          src={photo}
           alt="Post Item"
         />
-        <img
-          className="media__item"
-          src="./img/post/nature-2.png"
-          alt="Post Item"
-        />
-        <img
-          className="media__item"
-          src="./img/post/nature-3.png"
-          alt="Post Item"
-        />
-        <img
-          className="media__item"
-          src="./img/post/nature-4.png"
-          alt="Post Item"
-        />
-        <img
-          className="media__item"
-          src="./img/post/nature-5.png"
-          alt="Post Item"
-        />
-        <img
-          className="media__item"
-          src="./img/post/nature-6.png"
-          alt="Post Item"
-        />
-      </div>
+      ))}
+      </div>}
       <div className="PostControls">
         <div className="icon-wrapper like">
           <span className="count likes-count">-500</span>
@@ -122,6 +129,7 @@ export const Post = () => {
           />
         </svg>
       </div>
+      <span onClick={() => toggleMenu(!isMenuOpen)}>
       <svg
         className="icon icon-more"
         viewBox="0 0 25 5"
@@ -133,6 +141,8 @@ export const Post = () => {
           <circle id="ellipse_3" cx="2.5" cy="2.5" r="2.5" />
         </g>
       </svg>
+      </span>
+      {isMenuOpen && <PostMenu onUploadClick={onPostFileUpload} />}
     </div>
   );
 };

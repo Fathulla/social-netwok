@@ -1,9 +1,7 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { UserAvatar } from '../UI/userAvatar/UserAvatar';
-import { useState } from 'react';
-
 
 
 export const ProfileHeader = () => {

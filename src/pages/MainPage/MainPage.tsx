@@ -5,9 +5,9 @@ import { ThemeMainPage } from "./MainPage.style";
 import { useGetPostListQuery } from "../../store/api/postApi";
 
 export const MainPage = () => {
-  const {data, isError, isLoading} = useGetPostListQuery(null)
+  const { data, isError, isLoading } = useGetPostListQuery(null);
 
-  console.log('data', data);
+  console.log("data", data);
 
   return (
     <Container>
@@ -392,9 +392,18 @@ export const MainPage = () => {
           </div>
           {isError && <h1>Произлшла ошибка</h1>}
           {isLoading && <h1>Загрузка</h1>}
-          {data?.message?.length && <Post/>}
-          <Post/>
-          <div className="Post Repost _liked _marked">
+          {data?.message?.length &&
+            data?.message?.map((post: any) => (
+              <Post
+                key={post.id}
+                postText={post.main_text}
+                postDate={post.reg_date}
+                photos={post.photos}
+                userName={post.user_fk.name}
+                postId={post.id}
+              />
+            ))}
+          {/* <div className="Post Repost _liked _marked">
             <div className="UserElem Repost__owner">
               <img src="./img/users/mark-krahmalev.jpeg" alt="User" />
               <div className="user__description">
@@ -515,7 +524,7 @@ export const MainPage = () => {
                 <circle id="ellipse_3" cx="2.5" cy="2.5" r="2.5" />
               </g>
             </svg>
-          </div>
+          </div> */}
         </main>
         <aside className="RightSide">
           <div className="List">

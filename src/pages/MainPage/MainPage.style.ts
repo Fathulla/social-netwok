@@ -310,7 +310,8 @@ export const ThemeMainPage = styled.div`
   
       &:hover {
         scale: 1.1;
-        filter: drop-shadow(0 0 10px ${(props) => props.theme.colors.primeColor});
+        filter: drop-shadow(0 0 10px ${(props) =>
+          props.theme.colors.primeColor});
       }
   
       &:active {
