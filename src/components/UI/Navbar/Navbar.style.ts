@@ -1,7 +1,6 @@
 import { styled } from "styled-components";
 
 export const ThemeNavbar = styled.nav`
-    color: black;
     box-shadow: 0 0 10px ${(props) => props.theme.colors.lightGray};
     border-radius: 20px;
     padding: calc(1vw + 11px);
@@ -19,6 +18,7 @@ export const ThemeNavbar = styled.nav`
       display: flex;
       align-items: center;
       gap: 20px;
+      color: black;
 
       border-radius: 10px;
       padding: 10px 15px;
