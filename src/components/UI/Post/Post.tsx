@@ -54,7 +54,7 @@ export const Post = ({
       </div>}
       <div className="PostControls">
         <div className="icon-wrapper like">
-          <span className="count likes-count">-500</span>
+          <span className="count likes-count">500</span>
           <svg
             className="icon icon-like"
             viewBox="0 0 23 23"

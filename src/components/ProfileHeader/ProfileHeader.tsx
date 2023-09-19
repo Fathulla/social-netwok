@@ -8,10 +8,14 @@ import { ThemeProfileHeader } from "./ProfileHeader.style";
 import { ThemeProfileBackground } from "./ProfileBackground.style";
 import { ThemeUserBlock } from "./UserBlock.style";
 import { ThemeUserDescription } from "./UserDescription.style";
+import { UserParamenter } from "../UI/UserParametr/UserParameter";
+import { AppHeader } from "./../UI/AppHeader/AppHeader";
+import { ButtonsWrapper } from "../UI/ButtonsWrapper/ButtonsWrapper";
+import { ThemeUserInfo } from "./UserInfo.style";
 
 export const ProfileHeader = () => {
   const user = useSelector((state: RootState) => state.userSLice.user);
-  const [avatar, setAvatar] = useState('src="./img/users/denis-frolov.jpeg"');
+  const [avatar, setAvatar] = useState('./img/users/denis-frolov.jpeg');
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files?.[0]) {
@@ -54,26 +58,17 @@ export const ProfileHeader = () => {
           onAvatarClick={() => {}}
         />
         <ThemeUserDescription>
-          <h1 className="user__name">{user?.name}</h1>
-          <div className="user__info">
-            <div className="parameter">
-              <span className="key">Друзья</span>
-              <span className="value">130</span>
-            </div>
-            <div className="parameter">
-              <span className="key">Подписчики</span>
-              <span className="value">923</span>
-            </div>
-            <div className="parameter">
-              <span className="key">Подписки</span>
-              <span className="value">246</span>
-            </div>
-          </div>
+          <AppHeader type={"h1"} headerText={user?.name} />
+          <ThemeUserInfo>
+            <UserParamenter parameterName={"Друзья"} value={130} />
+            <UserParamenter parameterName={"Подписчики"} value={923} />
+            <UserParamenter parameterName={"Подписки"} value={246} />
+          </ThemeUserInfo>
         </ThemeUserDescription>
-        <div className="buttons-wrapper">
-          <button className="secondary">Редактировать профиль</button>
-          <button className="primary">Добавить историю</button>
-        </div>
+        <ButtonsWrapper
+          buttonText="Редактировать профиль"
+          buttonTex2="Добавить историю"
+        />
       </ThemeUserBlock>
       <ThemeProfileBackground></ThemeProfileBackground>
     </ThemeProfileHeader>

@@ -2,7 +2,7 @@ import React from "react";
 import { ThemeHeader } from './AppHeader.styled';
 
 type AppHeaderProps = {
-    headerText: string,
+    headerText: any,
     type: 'h1' | 'h2' | 'h3' | 'h4' 
 }
 

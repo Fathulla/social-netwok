@@ -76,61 +76,6 @@ export const ThemeProfilePage = styled.div`
     }
   }
 
-  .Navbar {
-    box-shadow: 0 0 10px ${(props) => props.theme.colors.lightGray};
-    border-radius: 20px;
-    padding: calc(1vw + 11px);
-    background-color: ${(props) => props.theme.colors.elemsBgc};
-    color: ${(props) => props.theme.colors.hoverText};
-
-    .navbar__list {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .navbar__item {
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-
-      border-radius: 10px;
-      padding: 10px 15px;
-      list-style: none;
-      transition: 200ms;
-
-      .icon {
-        flex: 0 1 25px;
-        height: calc(1vw + 5px); //? 1440 - 20 | 1920 - 25
-        object-fit: contain;
-        fill: ${(props) => props.theme.colors.primeColor};
-      }
-
-      .item__name {
-        flex: 1 1 auto;
-      }
-
-      &:hover {
-        background-color: ${(props) => props.theme.colors.lightGray};
-      }
-
-      &:active {
-        transition: 100ms;
-        background-color: ${(props) => props.theme.colors.primeColor};
-        color: white;
-
-        .icon {
-          fill: white;
-        }
-
-        .Badge {
-          background-color: white;
-          color: ${(props) => props.theme.colors.hoverText};
-        }
-      }
-    }
-  }
 
   @media (max-width: 1100px) {
     .ProfilePage {
@@ -161,34 +106,6 @@ export const ThemeProfilePage = styled.div`
       }
     }
   }
-
-    .user__info {
-      display: inline-flex;
-      align-items: center;
-
-      gap: calc(3.8vw - 34px); //? 40 - 1920 | 20 - 1400
-      border-top: 1px solid ${(props) => props.theme.colors.lightGray};
-      padding-top: 20px;
-
-      .parameter {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-
-        border-radius: 12px;
-        padding: 10px;
-        transition: 200ms;
-
-        &:hover {
-          background-color: ${(props) => props.theme.colors.lightGray};
-        }
-
-        .value {
-          color: ${(props) => props.theme.colors.gray};
-        }
-      }
-    }
 
     .user__name {
       margin-bottom: 15px;
@@ -322,15 +239,6 @@ export const ThemeProfilePage = styled.div`
       border-radius: 50%;
       object-fit: cover;
     }
-
-    /* .user__description {
-      flex: 1 1 auto;
-
-      .main__text {
-        margin-bottom: 5px;
-        display: inline-block;
-      }
-    } */
 
     .secondary__text {
       &._online {
