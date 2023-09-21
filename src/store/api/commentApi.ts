@@ -1,15 +1,14 @@
-import React from "react";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { baseQuery } from "../../utils/baseQuery";
 
 interface AddCommentPayload {
-    user_id: number;
-    comment_text: string;
+  user_id: number;
+  post_id: string;
 }
 
 interface AddCommentResponce {
-    status: number;
-    comment_id: number;
+  status: number;
+  post_id: number;
 }
 
 export const commentApi = createApi({
@@ -23,18 +22,19 @@ export const commentApi = createApi({
       query: (commentId: number) => `/comment/${commentId}`,
     }),
     addNewComment: builder.mutation<AddCommentResponce, AddCommentPayload>({
-        query: (payload) => {
-            return {
-              url: "/comment",
-              method: "POST",
-              body: payload,
-            };
-        }
-    })
+      query: (payload) => {
+        return {
+          url: "/comment",
+          method: "POST",
+          body: payload,
+        };
+      },
+    }),
   }),
 });
 
-export const { 
-    useLazyGetCommentListQuery, 
-    useGetCommentItemQuery, 
-    useAddNewCommentMutation, } = commentApi;
+export const {
+  useLazyGetCommentListQuery,
+  useGetCommentItemQuery,
+  useAddNewCommentMutation,
+} = commentApi;

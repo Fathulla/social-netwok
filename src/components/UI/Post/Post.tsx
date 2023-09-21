@@ -1,8 +1,10 @@
 import React from "react";
-import {useState} from 'react'
-import { PostMenu } from './PostMenu';
-import { useUploadFileMutation} from "../../../store/api/fileApi"
-import {format} from "date-fns"
+import { useState } from "react";
+import { PostMenu } from "./PostMenu";
+import { useUploadFileMutation } from "../../../store/api/fileApi";
+import { format } from "date-fns";
+import { Icon } from "../icon/icon";
+import { PostComment } from "./PostComment";
 
 interface PostProps {
   userName: string;
@@ -10,34 +12,33 @@ interface PostProps {
   photos: Array<string>;
   postText: string;
   postId: string;
+  comments: Array<string>;
 }
 
-export const Post = ({ 
-    userName, 
-    postDate, 
-    postText, 
-    photos,
-    postId, 
-    }: PostProps) => {
-        const [isMenuOpen, toggleMenu] = useState<boolean>(false)
+export const Post = ({
+  userName,
+  postDate,
+  postText,
+  photos,
+  postId,
+  comments,
+}: PostProps) => {
+  const [isMenuOpen, toggleMenu] = useState<boolean>(false);
 
-        const [uploadFile] = useUploadFileMutation()
-        
-    const onPostFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if( event.target.files?.[0]) {
-            const formData = new FormData();
-            const file = event.target.files[0]
+  const [uploadFile] = useUploadFileMutation();
 
-            formData.append('post_id', postId)
-            formData.append('photo_file', file)
+  const onPostFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files?.[0]) {
+      const formData = new FormData();
+      const file = event.target.files[0];
 
-            //uploadFile(formData)
-        }
+      formData.append("post_id", postId);
+      formData.append("photo_file", file);
+
+      //uploadFile(formData)
     }
-    const formattedDate = format (
-      new Date(postDate),
-      'eeee MM/dd/yyyy hh:mm'
-    )
+  };
+  const formattedDate = format(new Date(postDate), "eeee MM/dd/yyyy hh:mm");
 
   return (
     <div className="Post _liked _marked">
@@ -112,30 +113,17 @@ export const Post = ({
         </div>
       </div>
       <div className="CommentBlock">
-        <img src="./img/users/aleksandr-maykov.jpeg" alt="User" />
-        <div className="comment__description">
-          <a href="#" className="comment__owner">
-            Карина Савина
-          </a>
-          <p className="comment__text">Это текст комментария...</p>
-          <a href="#" className="reply">
-            Ответить
-          </a>
-        </div>
-        <span className="date">25 марта</span>
-        <svg
-          className="icon icon-like"
-          viewBox="0 0 23 23"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            id="icon"
-            d="M11.5 23L9.8325 21.3455C3.91 15.4921 0 11.6191 0 6.89373C0 3.02071 2.783 0 6.325 0C8.326 0 10.2465 1.01526 11.5 2.60708C12.7535 1.01526 14.674 0 16.675 0C20.217 0 23 3.02071 23 6.89373C23 11.6191 19.09 15.4921 13.1675 21.3455L11.5 23Z"
-          />
-        </svg>
+        {comments.length &&
+          comments.map((comment, idx) => (
+            <PostComment
+              key={`comment-${comment}-${idx}`}
+              commentText={comment}
+            />
+          ))}
       </div>
       <span onClick={() => toggleMenu(!isMenuOpen)}>
-        <svg
+        <Icon name="icon-more" width="25" height="5" />
+        {/* <svg
           className="icon icon-more"
           viewBox="0 0 25 5"
           xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +133,7 @@ export const Post = ({
             <circle id="ellipse_2" cx="12.5" cy="2.5" r="2.5" />
             <circle id="ellipse_3" cx="2.5" cy="2.5" r="2.5" />
           </g>
-        </svg>
+        </svg> */}
       </span>
       {isMenuOpen && <PostMenu onUploadClick={onPostFileUpload} />}
     </div>

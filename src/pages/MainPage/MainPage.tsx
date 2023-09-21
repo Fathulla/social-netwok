@@ -18,7 +18,7 @@ export const MainPage = () => {
   }, [fetchTrigger])
 
   useEffect(() => {
-    setFilteredPosts(data?.message.reverse());
+    setFilteredPosts(data?.message);
   }, [data]);
 
   const HaddleAddNewPost = () => {
@@ -187,9 +187,7 @@ export const MainPage = () => {
           {isError && <h1>Произошла ошибка</h1>}
           {isLoading && <h1>Загрузка</h1>}
           {data?.message?.length &&
-            data?.message
-              ?.reverse()
-              .map((post: any) => (
+            data?.message.map((post: any) => (
                 <Post
                   key={post.id}
                   postText={post.main_text}
@@ -197,6 +195,7 @@ export const MainPage = () => {
                   photos={post.photos}
                   userName={post.user_fk.name}
                   postId={post.id}
+                  comments={post.comments}
                 />
               ))}
         </main>
