@@ -184,7 +184,7 @@ export const MainPage = () => {
               </div>
             </div>
           </div>
-          {isError && <h1>Произлшла ошибка</h1>}
+          {isError && <h1>Произошла ошибка</h1>}
           {isLoading && <h1>Загрузка</h1>}
           {data?.message?.length &&
             data?.message
