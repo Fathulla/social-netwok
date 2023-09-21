@@ -5,16 +5,18 @@ import { ThemeProfilePage } from "./ProfilePage.style";
 import { UserElement } from "../../components/UI/UserElement/UserElement";
 import { AppHeader } from "../../components/UI/AppHeader/AppHeader";
 import Navbar from "../../components/UI/Navbar/Navbar";
+import { Icon } from "../../components/UI/icon/icon";
+import { MusicElement } from './../../components/UI/MusicElement/MusicElement';
 
 export const ProfilePage = () => {
   return (
     <Container>
       <ThemeProfilePage>
         <aside className="LeftSide">
-          <Navbar/>
+          <Navbar />
           <div className="List">
             <div className="List__title">
-              <AppHeader type="h2" headerText='Подписки'/>
+              <AppHeader type="h2" headerText="Подписки" />
               <span className="count">123</span>
             </div>
 
@@ -53,11 +55,7 @@ export const ProfilePage = () => {
               secondaryText="Литература"
               badgeNumber={3}
             />
-            <UserElement
-              mainText="Look"
-              secondaryText="Мода"
-              badgeNumber={3}
-            />
+            <UserElement mainText="Look" secondaryText="Мода" badgeNumber={3} />
           </div>
         </aside>
         <ProfileHeader />
@@ -108,7 +106,8 @@ export const ProfilePage = () => {
             <div className="UserPosts__controls">
               <div className="tabs">
                 <div className="tab _no-select photos _active">
-                  <svg
+                  <Icon name="icon-photo" width="25" height="25" />
+                  {/* <svg
                     className="icon icon-photo"
                     viewBox="0 0 25 25"
                     fill="none"
@@ -118,12 +117,13 @@ export const ProfilePage = () => {
                       id="photo"
                       d="M25 17.5V2.5C25 1.125 23.875 0 22.5 0H7.5C6.125 0 5 1.125 5 2.5V17.5C5 18.875 6.125 20 7.5 20H22.5C23.875 20 25 18.875 25 17.5ZM11.25 12.5L13.7875 15.8875L17.5 11.25L22.5 17.5H7.5L11.25 12.5ZM0 5V22.5C0 23.875 1.125 25 2.5 25H20V22.5H2.5V5H0Z"
                     />
-                  </svg>
+                  </svg> */}
 
                   <span>Фото</span>
                 </div>
                 <div className="tab _no-select videos">
-                  <svg
+                  <Icon name="icon-video" width="25" height="25" />
+                  {/* <svg
                     className="icon icon-video"
                     viewBox="0 0 25 25"
                     fill="none"
@@ -133,12 +133,13 @@ export const ProfilePage = () => {
                       id="video"
                       d="M13.8125 14.375L19 11.0625C19.3958 10.8125 19.5937 10.4583 19.5937 10C19.5937 9.54167 19.3958 9.1875 19 8.9375L13.8125 5.625C13.3958 5.33333 12.9687 5.3125 12.5312 5.5625C12.0937 5.8125 11.875 6.17708 11.875 6.65625V13.3437C11.875 13.8229 12.0937 14.1875 12.5312 14.4375C12.9687 14.6875 13.3958 14.6667 13.8125 14.375ZM7.5 20C6.8125 20 6.22375 19.755 5.73375 19.265C5.24375 18.775 4.99917 18.1867 5 17.5V2.5C5 1.8125 5.245 1.22375 5.735 0.733752C6.225 0.243752 6.81333 -0.000831211 7.5 2.12224e-06H22.5C23.1875 2.12224e-06 23.7762 0.245002 24.2662 0.735002C24.7562 1.225 25.0008 1.81333 25 2.5V17.5C25 18.1875 24.755 18.7762 24.265 19.2662C23.775 19.7562 23.1867 20.0008 22.5 20H7.5ZM2.5 25C1.8125 25 1.22375 24.755 0.733752 24.265C0.243752 23.775 -0.000831211 23.1867 2.12224e-06 22.5V6.25C2.12224e-06 5.89583 0.120002 5.59875 0.360002 5.35875C0.600002 5.11875 0.896669 4.99917 1.25 5C1.60417 5 1.90125 5.12 2.14125 5.36C2.38125 5.6 2.50083 5.89667 2.5 6.25V22.5H18.75C19.1042 22.5 19.4012 22.62 19.6412 22.86C19.8812 23.1 20.0008 23.3967 20 23.75C20 24.1042 19.88 24.4012 19.64 24.6412C19.4 24.8812 19.1033 25.0008 18.75 25H2.5Z"
                     />
-                  </svg>
+                  </svg> */}
                   <span>Видео</span>
                 </div>
               </div>
               <div className="upload-media _no-select">
-                <svg
+                <Icon name="icon-upload" width="14" height="14" />
+                {/* <svg
                   className="icon icon-upload"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 14 14"
@@ -146,7 +147,7 @@ export const ProfilePage = () => {
                   <g>
                     <path d="M13,8h-5v5c0,.27-.11,.52-.29,.71-.19,.19-.44,.29-.71,.29s-.52-.11-.71-.29c-.19-.19-.29-.44-.29-.71v-5H1c-.27,0-.52-.11-.71-.29-.19-.19-.29-.44-.29-.71s.11-.52,.29-.71c.19-.19,.44-.29,.71-.29H6V1c0-.27,.11-.52,.29-.71,.19-.19,.44-.29,.71-.29s.52,.11,.71,.29c.19,.19,.29,.44,.29,.71V6h5c.27,0,.52,.11,.71,.29,.19,.19,.29,.44,.29,.71s-.11,.52-.29,.71c-.19,.19-.44,.29-.71,.29Z" />
                   </g>
-                </svg>
+                </svg> */}
                 <span>Загрузить фото</span>
               </div>
             </div>
@@ -317,7 +318,8 @@ export const ProfilePage = () => {
                 />
               </svg>
             </div>
-            <svg
+            <Icon name="icon-more" width="25" height="5" />
+            {/* <svg
               className="icon icon-more"
               viewBox="0 0 25 5"
               xmlns="http://www.w3.org/2000/svg"
@@ -327,7 +329,7 @@ export const ProfilePage = () => {
                 <circle id="ellipse_2" cx="12.5" cy="2.5" r="2.5" />
                 <circle id="ellipse_3" cx="2.5" cy="2.5" r="2.5" />
               </g>
-            </svg>
+            </svg> */}
           </div>
           <div className="Post Repost _liked _marked">
             <div className="UserElem Repost__owner">
@@ -364,7 +366,7 @@ export const ProfilePage = () => {
             </div>
             <div className="PostControls">
               <div className="icon-wrapper like">
-                <span className="count likes-count">-500</span>
+                <span className="count likes-count">500</span>
                 <svg
                   className="icon icon-like"
                   viewBox="0 0 23 23"
@@ -439,7 +441,8 @@ export const ProfilePage = () => {
                 />
               </svg>
             </div>
-            <svg
+            <Icon name="icon-more" width="25" height="5" />
+            {/* <svg
               className="icon icon-more"
               viewBox="0 0 25 5"
               xmlns="http://www.w3.org/2000/svg"
@@ -449,14 +452,15 @@ export const ProfilePage = () => {
                 <circle id="ellipse_2" cx="12.5" cy="2.5" r="2.5" />
                 <circle id="ellipse_3" cx="2.5" cy="2.5" r="2.5" />
               </g>
-            </svg>
+            </svg> */}
           </div>
         </main>
         <aside className="RightSide">
           <div className="bio">
             <div className="bio__data">
               <div className="data__item">
-                <svg
+                <Icon name="icon-birthday" width="21" height="24" />
+                {/* <svg
                   className="icon icon-birthday"
                   viewBox="0 0 21 24"
                   fill="none"
@@ -467,13 +471,14 @@ export const ProfilePage = () => {
                     d="M7.81348 3.225L9.24082 6H6.23438C5.32793 6 4.59375 5.16094 4.59375 4.125C4.59375 3.08906 5.32793 2.25 6.23438 2.25H6.32461C6.93574 2.25 7.50586 2.62031 7.81348 3.225ZM2.625 4.125C2.625 4.8 2.76855 5.4375 3.01875 6H1.3125C0.586523 6 0 6.67031 0 7.5V10.5C0 11.3297 0.586523 12 1.3125 12H19.6875C20.4135 12 21 11.3297 21 10.5V7.5C21 6.67031 20.4135 6 19.6875 6H17.9812C18.2314 5.4375 18.375 4.8 18.375 4.125C18.375 1.84687 16.759 0 14.7656 0H14.6754C13.367 0 12.1529 0.792188 11.4885 2.08125L10.5 4.00781L9.51152 2.08594C8.84707 0.792188 7.63301 0 6.32461 0H6.23438C4.24102 0 2.625 1.84687 2.625 4.125ZM16.4062 4.125C16.4062 5.16094 15.6721 6 14.7656 6H11.7592L13.1865 3.225C13.4982 2.62031 14.0643 2.25 14.6754 2.25H14.7656C15.6721 2.25 16.4062 3.08906 16.4062 4.125ZM1.3125 13.5V21.75C1.3125 22.9922 2.19434 24 3.28125 24H9.1875V13.5H1.3125ZM11.8125 24H17.7188C18.8057 24 19.6875 22.9922 19.6875 21.75V13.5H11.8125V24Z"
                     fill="#526ED3"
                   />
-                </svg>
+                </svg> */}
                 <p className="main__text">
                   День рождения: <span>9 августа</span>
                 </p>
               </div>
               <div className="data__item">
-                <svg
+                <Icon name="icon-location" width="19" height="24" />
+                {/* <svg
                   className="icon icon-location"
                   viewBox="0 0 19 24"
                   fill="none"
@@ -484,13 +489,14 @@ export const ProfilePage = () => {
                     d="M9.5 12C10.1531 12 10.7124 11.7648 11.1779 11.2944C11.6434 10.824 11.8758 10.2592 11.875 9.6C11.875 8.94 11.6423 8.3748 11.1767 7.9044C10.7112 7.434 10.1523 7.1992 9.5 7.2C8.84688 7.2 8.28756 7.4352 7.82206 7.9056C7.35656 8.376 7.12421 8.9408 7.125 9.6C7.125 10.26 7.35775 10.8252 7.82325 11.2956C8.28875 11.766 8.84767 12.0008 9.5 12ZM9.5 24C6.31354 21.26 3.93379 18.7152 2.36075 16.3656C0.787708 14.016 0.000791667 11.8408 0 9.84C0 6.84 0.955146 4.45 2.86544 2.67C4.77573 0.89 6.98725 0 9.5 0C12.0135 0 14.2255 0.89 16.1357 2.67C18.046 4.45 19.0008 6.84 19 9.84C19 11.84 18.2131 14.0152 16.6392 16.3656C15.0654 18.716 12.6857 21.2608 9.5 24Z"
                     fill="#526ED3"
                   />
-                </svg>
+                </svg> */}
                 <p className="main__text">
                   Город: <span>Ташкент</span>
                 </p>
               </div>
               <div className="data__item">
-                <svg
+                <Icon name="icon-heart" width="23" height="23" />
+                {/* <svg
                   className="icon icon-heart"
                   viewBox="0 0 23 23"
                   fill="none"
@@ -501,7 +507,7 @@ export const ProfilePage = () => {
                     d="M11.5 23L9.8325 21.3455C3.91 15.4921 0 11.6191 0 6.89373C0 3.02071 2.783 0 6.325 0C8.326 0 10.2465 1.01526 11.5 2.60708C12.7535 1.01526 14.674 0 16.675 0C20.217 0 23 3.02071 23 6.89373C23 11.6191 19.09 15.4921 13.1675 21.3455L11.5 23Z"
                     fill="#526ED3"
                   />
-                </svg>
+                </svg> */}
                 <p className="main__text">
                   Статус: <span>Не указано</span>
                 </p>
@@ -524,7 +530,7 @@ export const ProfilePage = () => {
           </div>
           <div className="FriendsBlock">
             <div className="Friends__title">
-              <h2>Друзья</h2>
+              <AppHeader type="h2" headerText="Друзья" />
               <span className="count">130</span>
             </div>
             <div className="Friends__wrapper">
@@ -568,57 +574,15 @@ export const ProfilePage = () => {
           </div>
           <div className="MusicBlock">
             <div className="MusicBlock__title">
-              <h2>Вы недавно слушали</h2>
+              <AppHeader type="h2" headerText="Вы недавно слушали"/>
               <span>123</span>
             </div>
-            <div className="MusicElem">
-              <img src="./img/music/album-1.png" alt="Album" />
-              <div className="music__description">
-                <p className="main__text">Pieces</p>
-                <p className="secondary__text">Andrew Belle</p>
-              </div>
-              <div className="plus-button _active"></div>
-            </div>
-            <div className="MusicElem">
-              <img src="./img/music/album-2.png" alt="Album" />
-              <div className="music__description">
-                <p className="main__text">In the Wind</p>
-                <p className="secondary__text">On-The-Go</p>
-              </div>
-              <div className="plus-button"></div>
-            </div>
-            <div className="MusicElem">
-              <img src="./img/music/album-3.png" alt="Album" />
-              <div className="music__description">
-                <p className="main__text">On you own</p>
-                <p className="secondary__text">Meltt</p>
-              </div>
-              <div className="plus-button _active"></div>
-            </div>
-            <div className="MusicElem">
-              <img src="./img/music/album-4.png" alt="Album" />
-              <div className="music__description">
-                <p className="main__text">Infinity</p>
-                <p className="secondary__text">James Young</p>
-              </div>
-              <div className="plus-button"></div>
-            </div>
-            <div className="MusicElem">
-              <img src="./img/music/album-5.png" alt="Album" />
-              <div className="music__description">
-                <p className="main__text">Let me follow</p>
-                <p className="secondary__text">Son Lux</p>
-              </div>
-              <div className="plus-button _active"></div>
-            </div>
-            <div className="MusicElem">
-              <img src="./img/music/album-6.png" alt="Album" />
-              <div className="music__description">
-                <p className="main__text">Youth</p>
-                <p className="secondary__text">Glass Animals</p>
-              </div>
-              <div className="plus-button"></div>
-            </div>
+            <MusicElement mainText="Pieces" secondaryText="Andrew Belle" />
+            <MusicElement mainText="In the Wind" secondaryText="On-The-Go" />
+            <MusicElement mainText="On you own" secondaryText="Meltt" />
+            <MusicElement mainText="Infinity" secondaryText="James Young" />
+            <MusicElement mainText="Let me follow" secondaryText="Son Lux" />
+            <MusicElement mainText="Youth" secondaryText="Glass Animals" />
           </div>
         </aside>
       </ThemeProfilePage>

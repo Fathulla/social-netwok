@@ -2,6 +2,7 @@ import React from "react";
 import {useState} from 'react'
 import { PostMenu } from './PostMenu';
 import { useUploadFileMutation} from "../../../store/api/fileApi"
+import {format} from "date-fns"
 
 interface PostProps {
   userName: string;
@@ -29,8 +30,14 @@ export const Post = ({
 
             formData.append('post_id', postId)
             formData.append('photo_file', file)
+
+            //uploadFile(formData)
         }
     }
+    const formattedDate = format (
+      new Date(postDate),
+      'eeee MM/dd/yyyy hh:mm'
+    )
 
   return (
     <div className="Post _liked _marked">
@@ -38,20 +45,18 @@ export const Post = ({
         <img src="./img/users/aleksandr-maykov.jpeg" alt="User" />
         <div className="user__description">
           <span className="main__text">{userName}</span>
-          <p className="secondary__text">{postDate}</p>
+          <p className="secondary__text">{formattedDate}</p>
         </div>
       </div>
       <p className="Post__text">{postText}</p>
 
-      {photos.length && <div className="media-container">
-      {photos.map((photo) => (
-        <img
-          className="media__item"
-          src={photo}
-          alt="Post Item"
-        />
-      ))}
-      </div>}
+      {photos.length && (
+        <div className="media-container">
+          {photos.map((photo) => (
+            <img className="media__item" src={photo} alt="Post Item" />
+          ))}
+        </div>
+      )}
       <div className="PostControls">
         <div className="icon-wrapper like">
           <span className="count likes-count">500</span>
@@ -130,17 +135,17 @@ export const Post = ({
         </svg>
       </div>
       <span onClick={() => toggleMenu(!isMenuOpen)}>
-      <svg
-        className="icon icon-more"
-        viewBox="0 0 25 5"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g id="more">
-          <circle id="ellipse" cx="22.5" cy="2.5" r="2.5" />
-          <circle id="ellipse_2" cx="12.5" cy="2.5" r="2.5" />
-          <circle id="ellipse_3" cx="2.5" cy="2.5" r="2.5" />
-        </g>
-      </svg>
+        <svg
+          className="icon icon-more"
+          viewBox="0 0 25 5"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g id="more">
+            <circle id="ellipse" cx="22.5" cy="2.5" r="2.5" />
+            <circle id="ellipse_2" cx="12.5" cy="2.5" r="2.5" />
+            <circle id="ellipse_3" cx="2.5" cy="2.5" r="2.5" />
+          </g>
+        </svg>
       </span>
       {isMenuOpen && <PostMenu onUploadClick={onPostFileUpload} />}
     </div>

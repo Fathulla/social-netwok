@@ -1,10 +1,10 @@
 import React from "react";
-import { ThemeUserDescription } from './../../ProfileHeader/UserDescription.style';
+import { ThemeUserDescription } from "./../../ProfileHeader/UserDescription.style";
 
 interface UserElementProps {
-    mainText: string;
-    secondaryText: string;
-    badgeNumber: number;
+  mainText: string;
+  secondaryText: string;
+  badgeNumber: number;
 }
 
 export const UserElement = ({
@@ -19,6 +19,23 @@ export const UserElement = ({
         <p className="main__text">{mainText}</p>
         <p className="secondary__text">{secondaryText}</p>
       </ThemeUserDescription>
+      <span className="Badge">{badgeNumber}</span>
+    </div>
+  );
+};
+
+export const UserElem = ({
+  mainText,
+  secondaryText,
+  badgeNumber,
+}: UserElementProps) => {
+  return (
+    <div className="UserElem">
+      <img src="./img/users/aleksandr-maykov.jpeg" alt="User" />
+      <div className="user__description">
+        <p className="main__text">{mainText}</p>
+        <p className="secondary__text _online">{secondaryText}</p>
+      </div>
       <span className="Badge">{badgeNumber}</span>
     </div>
   );
