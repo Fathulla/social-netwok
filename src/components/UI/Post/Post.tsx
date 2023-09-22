@@ -9,10 +9,11 @@ import { PostComment } from "./PostComment";
 interface PostProps {
   userName: string;
   postDate: string;
-  photos: Array<string>;
+  photos: Array<{ id: number, photo_url: string}>;
   postText: string;
   postId: string;
   comments: Array<string>;
+  onAddComment: (posrId: string) => void; 
 }
 
 export const Post = ({
@@ -22,6 +23,7 @@ export const Post = ({
   photos,
   postId,
   comments,
+  onAddComment,
 }: PostProps) => {
   const [isMenuOpen, toggleMenu] = useState<boolean>(false);
 
@@ -54,7 +56,11 @@ export const Post = ({
       {photos.length && (
         <div className="media-container">
           {photos.map((photo) => (
-            <img className="media__item" src={photo} alt="Post Item" />
+            <img
+              className="media__item"
+              src={photo.photo_url}
+              alt="Post Item"
+            />
           ))}
         </div>
       )}
@@ -72,7 +78,7 @@ export const Post = ({
             />
           </svg>
         </div>
-        <div className="icon-wrapper comment">
+        <div className="icon-wrapper comment" onClick={()=> onAddComment(postId)}>
           <span className="count comments-count">500</span>
           <svg
             className="icon icon-comment"

@@ -1,34 +1,49 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import { Container } from "../../components/UI/Container/Container";
 import { Post } from "../../components/UI/Post/Post";
 import { ThemeMainPage } from "./MainPage.style";
 import { useLazyGetPostListQuery } from "../../store/api/postApi";
 import { AppHeader } from "../../components/UI/AppHeader/AppHeader";
-import { UserElem, UserElement } from "../../components/UI/UserElement/UserElement";
+import {
+  UserElem,
+  UserElement,
+} from "../../components/UI/UserElement/UserElement";
 import Navbar from "../../components/UI/Navbar/Navbar";
 import { MusicElement } from "../../components/UI/MusicElement/MusicElement";
 import { NewPostSection } from "../../components/NewPostSection/NewPostSection";
+import { AppModal } from "../../components/UI/AppModal/AppModal";
 
 export const MainPage = () => {
-  const [filteredPosts, setFilteredPosts] = useState([])
-  const [fetchTrigger, { data, isError, isLoading }] = useLazyGetPostListQuery();
-
-  useEffect (() => {
-    fetchTrigger(null)
-  }, [fetchTrigger])
+  const [filteredPosts, setFilteredPosts] = useState([]);
+  const [fetchTrigger, { data, isError, isLoading, isSuccess }] =
+    useLazyGetPostListQuery();
+  const [isModalOpen, toggleModal] = useState<boolean>(false);
+  const [newComment, setNewComment] = useState<string>("");
 
   useEffect(() => {
-    setFilteredPosts(data?.message);
+    fetchTrigger(null);
+  }, [fetchTrigger]);
+
+  useLayoutEffect(() => {
+    if (data?.message) {
+      setFilteredPosts(data?.message);
+    }
   }, [data]);
 
   const HaddleAddNewPost = () => {
-    fetchTrigger(null)
-  }
+    fetchTrigger(null);
+  };
 
-  console.log("data", data);
+  const addNewComment = () => {}
 
   return (
     <Container>
+      <AppModal
+        modalIsOpen={isModalOpen}
+        onCommentInputChange={(e) => setNewComment(e.target.value)}
+        closeModal={() => toggleModal}
+        onAddComment={addNewComment}
+      />
       <ThemeMainPage>
         <aside className="LeftSide">
           <Navbar />
@@ -186,18 +201,20 @@ export const MainPage = () => {
           </div>
           {isError && <h1>Произошла ошибка</h1>}
           {isLoading && <h1>Загрузка</h1>}
-          {data?.message?.length &&
-            data?.message.map((post: any) => (
-                <Post
-                  key={post.id}
-                  postText={post.main_text}
-                  postDate={post.reg_date}
-                  photos={post.photos}
-                  userName={post.user_fk.name}
-                  postId={post.id}
-                  comments={post.comments}
-                />
-              ))}
+          {isSuccess &&
+            !!filteredPosts?.length &&
+            filteredPosts?.map((post: any) => (
+              <Post
+                key={post.id}
+                postText={post.main_text}
+                postDate={post.reg_date}
+                photos={post.photos}
+                userName={post.user_fk.name}
+                postId={post.id}
+                comments={post.comments}
+                onAddComment={() => toggleModal(true)}
+              />
+            ))}
         </main>
         <aside className="RightSide">
           <div className="List">

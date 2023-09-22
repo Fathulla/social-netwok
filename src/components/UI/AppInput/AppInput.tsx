@@ -1,7 +1,7 @@
 import React from "react";
 import { ThemeInput, ThemeInputError } from "./AppInput.style";
 
-type AppInputProps = {
+interface AppInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   type: "tel" | "password" | "text" | "email";
   placeholderText: string;
   isError?: boolean;
@@ -29,4 +29,3 @@ export const AppInput = ({
     </>
   );
 };
-console.log("🚀 ~ file: AppInput.tsx:32 ~ AppInput:", AppInput);
