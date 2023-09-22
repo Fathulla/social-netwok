@@ -15,8 +15,7 @@ import { AppModal } from "../../components/UI/AppModal/AppModal";
 
 export const MainPage = () => {
   const [filteredPosts, setFilteredPosts] = useState([]);
-  const [fetchTrigger, { data, isError, isLoading, isSuccess }] =
-    useLazyGetPostListQuery();
+  const [fetchTrigger, { data, isError, isLoading, isSuccess }] = useLazyGetPostListQuery();
   const [isModalOpen, toggleModal] = useState<boolean>(false);
   const [newComment, setNewComment] = useState<string>("");
 
