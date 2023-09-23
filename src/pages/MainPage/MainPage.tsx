@@ -24,7 +24,7 @@ export const MainPage = () => {
   }, [fetchTrigger]);
 
   useLayoutEffect(() => {
-    if (data?.message) {
+    if (data?.message) {  
       setFilteredPosts(data?.message);
     }
   }, [data]);
