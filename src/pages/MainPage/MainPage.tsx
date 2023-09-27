@@ -12,19 +12,23 @@ import Navbar from "../../components/UI/Navbar/Navbar";
 import { MusicElement } from "../../components/UI/MusicElement/MusicElement";
 import { NewPostSection } from "../../components/NewPostSection/NewPostSection";
 import { AppModal } from "../../components/UI/AppModal/AppModal";
+import { useAddNewCommentMutation } from "../../store/api/commentApi";
 
 export const MainPage = () => {
   const [filteredPosts, setFilteredPosts] = useState([]);
-  const [fetchTrigger, { data, isError, isLoading, isSuccess }] = useLazyGetPostListQuery();
+  const [fetchTrigger, { data, isError, isLoading, isSuccess }] =
+    useLazyGetPostListQuery();
   const [isModalOpen, toggleModal] = useState<boolean>(false);
   const [newComment, setNewComment] = useState<string>("");
+  const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
+  const [postNewComment] = useAddNewCommentMutation();
 
   useEffect(() => {
     fetchTrigger(null);
   }, [fetchTrigger]);
 
   useLayoutEffect(() => {
-    if (data?.message) {  
+    if (data?.message) {
       setFilteredPosts(data?.message);
     }
   }, [data]);
@@ -33,7 +37,25 @@ export const MainPage = () => {
     fetchTrigger(null);
   };
 
-  const addNewComment = () => {}
+  const openComentsModal = (postId: string) => {
+    setSelectedPostId(postId);
+    toggleModal(true);
+    
+  };
+
+  const addNewComment = async () => {
+    if (selectedPostId) {
+      const commentData = {
+        user_id: 1,
+        post_id: selectedPostId,
+        text: newComment,
+      };
+
+      await postNewComment(commentData);
+      fetchTrigger(null);
+      toggleModal(false)
+    }
+  };
 
   return (
     <Container>
@@ -201,6 +223,7 @@ export const MainPage = () => {
           {isError && <h1>Произошла ошибка</h1>}
           {isLoading && <h1>Загрузка</h1>}
           {isSuccess &&
+            Array.isArray(filteredPosts) &&
             !!filteredPosts?.length &&
             filteredPosts?.map((post: any) => (
               <Post
@@ -211,7 +234,7 @@ export const MainPage = () => {
                 userName={post.user_fk.name}
                 postId={post.id}
                 comments={post.comments}
-                onAddComment={() => toggleModal(true)}
+                onAddComment={openComentsModal}
               />
             ))}
         </main>

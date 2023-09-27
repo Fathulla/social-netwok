@@ -2,6 +2,8 @@ import React from "react";
 import Modal from "react-modal";
 import { AppButton } from "../AppButton/AppButton";
 import { AppInput } from "../AppInput/AppInput";
+import { Icon } from "./../icon/icon";
+import { IconWrapper, ModalHeader, ContentBox } from "./AppModal.style";
 
 const customStyles = {
   content: {
@@ -34,13 +36,12 @@ export const AppModal = ({
       style={customStyles}
       contentLabel="Добавление коментов"
     >
-      <AppButton
-        buttonText="Добавление коментов"
-        isDisabled={false}
-        onClick={closeModal}
-      />
+      <IconWrapper onClick={closeModal}>
+        <Icon name="plus-button" />
+      </IconWrapper>
+
       <div>Добавление коментов</div>
-      <form action="">
+      <div>
         <AppInput
           type="text"
           placeholderText="new comment"
@@ -51,7 +52,7 @@ export const AppModal = ({
           isDisabled={false}
           onClick={() => onAddComment}
         />
-      </form>
+      </div>
     </Modal>
   );
 };

@@ -4,6 +4,7 @@ import { baseQuery } from "../../utils/baseQuery";
 interface AddCommentPayload {
   user_id: number;
   post_id: string;
+  text: string;
 }
 
 interface AddCommentResponce {
