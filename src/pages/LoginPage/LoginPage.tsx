@@ -102,9 +102,9 @@ export const LoginPage = () => {
               <AppInput
                 type="password"
                 placeholderText="Пароль"
-                {...field}
                 isError={errors.userpassword ? true : false}
                 errorText={errors.userpassword?.message}
+                defaultValue={''}
                 {...field}
               />
             )}
