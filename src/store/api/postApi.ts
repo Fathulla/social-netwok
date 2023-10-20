@@ -6,7 +6,7 @@ interface AddPostPayload {
   main_text: string;
 }
 
-interface AddPostResponce {
+interface AddPostResponse {
   status: number;
   post_id: number;
 }
@@ -15,13 +15,15 @@ export const postApi = createApi({
   reducerPath: "postApi",
   baseQuery: fetchBaseQuery({ baseUrl: baseQuery }),
   endpoints: (builder) => ({
+
     getPostList: builder.query({
       query: () => "/post",
     }),
+    
     getPostItem: builder.query({
       query: (postId: number) => `/post/${postId}`,
     }),
-    addNewPost: builder.mutation<AddPostResponce, AddPostPayload>({
+    addNewPost: builder.mutation<AddPostResponse, AddPostPayload>({
       query: (payload) => {
         return {
           url: "/post",
