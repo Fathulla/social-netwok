@@ -109,7 +109,8 @@ export const LoginPage = () => {
               />
             )}
           />
-          <AppButton buttonText="Войти" isDisabled={false} type="submit" />
+          <Link to={'/main'}><AppButton buttonText="Войти" isDisabled={false} type="submit" /></Link>
+          
         </form>
         <Link to="/forget-password">Забыли пароль?</Link>
         <RegistrationInfo />
