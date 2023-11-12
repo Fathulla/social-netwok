@@ -5,24 +5,24 @@ type StyledInput = {
 };
 
 export const ThemeInput = styled.input<StyledInput>`
-    display: block;
-    width: 100%;
-    margin-bottom: ${(props) => (props.$isError ? "4px" : "20px")};
-    border: 2px solid ${(props) => props.theme.colors.disabledBgc}
-    background-color: transparent;
+  display: block;
+  width: 100%;
+  margin-bottom: ${(props) => (props.$isError ? "4px" : "20px")};
+  border: 2px solid ${(props) => props.theme.colors.disabledBgc};
+  background-color: transparent;
 
-    &:last-child {
+  &:last-child {
     margin-bottom: 40px;
-    }
+  }
 
-    &:is(:hover, :focus) {
+  &:is(:hover, :focus) {
     border-color: ${(props) =>
       props.$isError ? props.theme.colors.red : props.theme.colors.primeColor};
-    }
+  }
 
-    ${(props) =>
-      props.$isError &&
-      `
+  ${(props) =>
+    props.$isError &&
+    `
         border-color: ${props.theme.colors.red}
     `}
 `;
