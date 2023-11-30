@@ -18,7 +18,7 @@ import { ThemeLoginPage } from "./LoginPage.style";
 const mockUser: User = {
   user_id: 999,
   name: "pavel",
-  mail: "test@test.com",  
+  mail: "test@test.com",
   phone_number: "123123",
   reg_data: new Date().toISOString(),
   city: "Tashkent",
@@ -79,7 +79,7 @@ export const LoginPage = () => {
   return (
     <Container>
       <ThemeLoginPage>
-      <AppHeader type="h1" headerText="Авторизация" />
+        <AppHeader type="h1" headerText="Авторизация" />
         <form onSubmit={handleSubmit(onLoginSubmit)}>
           <Controller
             name="useremail"
@@ -104,13 +104,14 @@ export const LoginPage = () => {
                 placeholderText="Пароль"
                 isError={errors.userpassword ? true : false}
                 errorText={errors.userpassword?.message}
-                defaultValue={''}
+                defaultValue={""}
                 {...field}
               />
             )}
           />
-          <Link to={'/main'}><AppButton buttonText="Войти" isDisabled={false} type="submit" /></Link>
-          
+          <Link to={"/main"}>
+            <AppButton buttonText="Войти" isDisabled={false} type="submit" />
+          </Link>
         </form>
         <Link to="/forget-password">Забыли пароль?</Link>
         <RegistrationInfo />

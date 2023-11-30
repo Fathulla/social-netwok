@@ -47,7 +47,6 @@ export const ThemeProfilePage = styled.div`
         margin-bottom: 20px;
       }
     }
-  }
 
   @media (max-width: 1440px) {
     .ProfilePage {
@@ -110,7 +109,6 @@ export const ThemeProfilePage = styled.div`
     .user__name {
       margin-bottom: 15px;
     }
-  }
 
   @keyframes wallpaper-anim {
     0% {
@@ -246,7 +244,6 @@ export const ThemeProfilePage = styled.div`
         };
       }
     }
-  }
 
   .WhatsNew {
     box-shadow: 0 0 10px ${(props) => props.theme.colors.lightGray};

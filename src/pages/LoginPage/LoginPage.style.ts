@@ -21,7 +21,6 @@ export const ThemeLoginPage =  styled.div`
         text-decoration: underline;
       }
     }
-  }
   
   @media (max-width: 530px) {
     .LoginPage {

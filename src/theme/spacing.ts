@@ -1,4 +1,4 @@
-export const spcing = {
+export const spacing = {
   space: {
     m: 24,
   },

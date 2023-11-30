@@ -23,6 +23,12 @@ export const MainPage = () => {
   const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
   const [postNewComment] = useAddNewCommentMutation();
 
+
+  if (isError) {
+    console.log(isError);
+  }
+
+ 
   useEffect(() => {
     fetchTrigger(null);
   }, [fetchTrigger]);

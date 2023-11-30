@@ -1,9 +1,9 @@
 import { colors } from "./colors";
-import { spcing } from "./spacing";
+import { spacing } from "./spacing";
 
 export const theme = {
   colors: { ...colors },
-  spacing: { ...spcing },
+  spacing: { ...spacing }
 };
 
 export type Theme = typeof theme;

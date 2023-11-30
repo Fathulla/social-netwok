@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import { Controller } from "react-hook-form";
 import { useAddNewPostMutation } from "../../store/api/postApi";
 import { Icon } from "../UI/icon/icon";
 
@@ -40,9 +39,9 @@ export const NewPostSection = ({onNewPostAdded}:NewPostSectionProps) => {
         disabled={isAddPostDisabled}
       />
       <div className="icons-wrapper">
-        <Icon name="camera" padding="10" borderRadius="10" />
-        <Icon name="play-history" padding="10" borderRadius="10" />
-        <Icon name="music" padding="10" borderRadius="10" />
+        <Icon name="camera" padding="10" />
+        <Icon name="play-history" padding="10" />
+        <Icon name="music" padding="10" />
       </div>
     </div>
   );
