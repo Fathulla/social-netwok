@@ -7,7 +7,7 @@ interface AddCommentPayload {
   text: string;
 }
 
-interface AddCommentResponce {
+interface AddCommentResponse {
   status: number;
   post_id: number;
 }
@@ -22,7 +22,7 @@ export const commentApi = createApi({
     getCommentItem: builder.query({
       query: (commentId: number) => `/comment/${commentId}`,
     }),
-    addNewComment: builder.mutation<AddCommentResponce, AddCommentPayload>({
+    addNewComment: builder.mutation<AddCommentResponse, AddCommentPayload>({
       query: (payload) => {
         return {
           url: "/comment",
